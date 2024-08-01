@@ -25,10 +25,7 @@ while len(correct_guesses) != 50:
 
     # exits program if user gives up and creates a csv file of remaining states
     if answer == "Exit":
-        remaining_states = []
-        for value in df['state']:
-            if value not in correct_guesses:
-                remaining_states.append(value)
+        remaining_states = [value for value in df['state'] if value not in correct_guesses]
 
         new_df = pandas.DataFrame(remaining_states, columns=["Name"])
         new_df.to_csv("states_to_learn.csv")
